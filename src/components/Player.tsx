@@ -92,18 +92,11 @@ const LivestreamPlayer: React.FC<PlayerProps> = ({ overlay, setOverlay }) => {
   }, []);
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          position: "relative",
-          width: "50vw",
-        }}
-      >
+    <div className="flex justify-center">
+      <div className="relative ">
         <img
           src={frame}
-          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+          className="object-cover w-full h-full"
           alt="Livestream"
         />
 
@@ -131,7 +124,7 @@ const LivestreamPlayer: React.FC<PlayerProps> = ({ overlay, setOverlay }) => {
               }}
               width={data.resizeW}
               height={data.resizeH}
-              minConstraints={[100, 100]}
+              minConstraints={[150, 150]}
               maxConstraints={[300, 300]}
               style={{
                 backgroundColor: "white",
@@ -164,7 +157,7 @@ const LivestreamPlayer: React.FC<PlayerProps> = ({ overlay, setOverlay }) => {
               ) : data?.content ? (
                 <img
                   src={data?.content}
-                  style={{ objectFit: "cover", width: "100%", height: "80%" }}
+                  style={{ objectFit: "cover", width: "100%", height: "70%" }}
                   alt=""
                 />
               ) : (
@@ -174,55 +167,60 @@ const LivestreamPlayer: React.FC<PlayerProps> = ({ overlay, setOverlay }) => {
           </Draggable>
         ))}
       </div>
-      <button
-        onClick={() => {
-          fetch("http://127.0.0.1:4999/pause", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              sid: sid,
-            }),
-          });
-        }}
-      >
-        Pause
-      </button>
-      <button
-        onClick={() => {
-          fetch("http://127.0.0.1:4999/play", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              sid: sid,
-            }),
-          });
-        }}
-      >
-        {" "}
-        Play
-      </button>
-
-      <div>
-        <h2>Overlay Settings</h2>
-      </div>
-      <div>
-        <h2>Create New Overlay</h2>
-        <button onClick={!addOverlay ? onClose : () => {}}>
-          Create Overlay
+      <div className="flex flex-col justify-center mx-4">
+        <button
+          onClick={() => {
+            fetch("http://127.0.0.1:4999/pause", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                sid: sid,
+              }),
+            });
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Pause
         </button>
-        {addOverlay ? (
-          <Overlay
-            onClose={onClose}
-            overlay={overlay}
-            setOverlay={setOverlay}
-          ></Overlay>
-        ) : (
-          <></>
-        )}
+        <button
+          onClick={() => {
+            fetch("http://127.0.0.1:4999/play", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                sid: sid,
+              }),
+            });
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+        >
+          Play
+        </button>
+        <div className="mt-4">
+          <h2 className="text-lg font-semibold">Overlay Settings</h2>
+        </div>
+        <div className="mt-4">
+          <h2 className="text-lg font-semibold">Create New Overlay</h2>
+          <button
+            onClick={!addOverlay ? onClose : () => {}}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2"
+          >
+            Create Overlay
+          </button>
+          {addOverlay ? (
+            <Overlay
+              onClose={onClose}
+              overlay={overlay}
+              setOverlay={setOverlay}
+            ></Overlay>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -58,15 +58,21 @@ const Login: React.FC<LoginProps> = ({ setOverlay }) => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="w-full max-w-xs">
+      <h2 className="text-2xl font-bold mb-4">Login</h2>
       <input
         type="text"
         placeholder="Enter your username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        className="border border-gray-400 rounded py-2 px-4 mb-4 w-full"
       />
-      <button onClick={handleLogin}>Login</button>
+      <button
+        onClick={handleLogin}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Login
+      </button>
     </div>
   );
 };
@@ -120,21 +126,28 @@ const Register: React.FC<RegisterProps> = ({
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="w-full max-w-md">
+      <h2 className="text-2xl font-bold mb-4">Register</h2>
       <input
         type="text"
         placeholder="Enter your username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        className="border border-gray-400 rounded py-2 px-4 mb-4 w-full"
       />
       <input
         type="text"
         placeholder="Enter RTSP URL"
         value={rtspUrl}
         onChange={(e) => setRtspUrl(e.target.value)}
+        className="border border-gray-400 rounded py-2 px-4 mb-4 w-full"
       />
-      <button onClick={handleRegister}>Register</button>
+      <button
+        onClick={handleRegister}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Register
+      </button>
     </div>
   );
 };
@@ -156,7 +169,7 @@ const LoginOrRegister: React.FC<LoginOrRegisterProps> = ({
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {isLogin ? (
         <Login
           setOverlay={setOverlay}
@@ -170,7 +183,10 @@ const LoginOrRegister: React.FC<LoginOrRegisterProps> = ({
           onRegister={handleRegister}
         />
       )}
-      <button onClick={() => setIsLogin(!isLogin)}>
+      <button
+        onClick={() => setIsLogin(!isLogin)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+      >
         {isLogin ? "Register" : "Login"}
       </button>
     </div>

@@ -60,8 +60,8 @@ const Overlay: React.FC<OverlayProps> = ({ onClose, overlay, setOverlay }) => {
       content: textValue,
       dragX: 0,
       dragY: 0,
-      resizeW: 100,
-      resizeH: 100,
+      resizeW: 150,
+      resizeH: 150,
     };
     if (isTextSelected) {
       console.log("Text submitted:", textValue);
@@ -101,46 +101,63 @@ const Overlay: React.FC<OverlayProps> = ({ onClose, overlay, setOverlay }) => {
   }, [overlay]);
 
   return (
-    <div>
-      <h2>Select Option</h2>
-      <div>
-        <label>
+    <div className="max-w-md mx-auto">
+      <h2 className="text-xl font-bold mb-4">Select Option</h2>
+      <div className="mb-4">
+        <label className="inline-flex items-center mr-4">
           <input
             type="radio"
             name="option"
             checked={!isTextSelected}
             onChange={handleImageOption}
+            className="form-radio h-5 w-5 text-blue-600"
           />
-          Image
+          <span className="ml-2">Image</span>
         </label>
-        <label>
+        <label className="inline-flex items-center">
           <input
             type="radio"
             name="option"
             checked={isTextSelected}
             onChange={handleTextOption}
+            className="form-radio h-5 w-5 text-blue-600"
           />
-          Text
+          <span className="ml-2">Text</span>
         </label>
       </div>
 
       {isTextSelected ? (
-        <div>
-          <label>
-            Text Input:
-            <input type="text" value={textValue} onChange={handleTextChange} />
+        <div className="mb-4">
+          <label className="block">
+            <span className="text-gray-700">Text Input:</span>
+            <input
+              type="text"
+              value={textValue}
+              onChange={handleTextChange}
+              className="mt-1 block w-full rounded border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            />
           </label>
         </div>
       ) : (
-        <div>
-          <label>
-            Image Upload:
-            <input type="file" accept="image/*" onChange={handleImageChange} />
+        <div className="mb-4">
+          <label className="block">
+            <span className="text-gray-700">Image Upload:</span>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="mt-1 block w-full"
+            />
           </label>
         </div>
       )}
 
-      <button onClick={handleSubmit}>Submit</button>
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Submit
+      </button>
     </div>
   );
 };
