@@ -47,6 +47,7 @@ const Login: React.FC<LoginProps> = ({ setOverlay }) => {
           data?.overlays.map((jsonString: string) => JSON.parse(jsonString))
         );
         localStorage.setItem("user_name", username);
+        localStorage.setItem("rtsp_url", data?.rtsp_url);
         navigate("/view");
       } catch (err) {
         console.log(err);
@@ -106,6 +107,8 @@ const Register: React.FC<RegisterProps> = ({
         }
 
         localStorage.setItem("user_name", username);
+        localStorage.setItem("rtsp_url", rtspUrl);
+
         navigate("/view");
       } catch (err) {
         console.log(err);

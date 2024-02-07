@@ -1,30 +1,14 @@
-# React + TypeScript + Vite
+Again Really sorry for the horrible looking frontend, I promise I could have done a much, much better solution for the fronted wiht porper use of typescript and react principle.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The user can register or login and needs to provide a valid rtsp url
+I am providing a demo one
+user : test
+url : rtsp://8.devline.ru:9784/cameras/6/streaming/sub?authorization=Basic%20YWRtaW46&audio=0
 
-Currently, two official plugins are available:
+The user can pause and play the strem using the buttons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+create overlays either of img or text
 
-## Expanding the ESLint configuration
+The text or img can be dragged by clicking on the drage here and deleted from clicking the delete
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+The overlays can me resized as well by dragging them from the bottom right side

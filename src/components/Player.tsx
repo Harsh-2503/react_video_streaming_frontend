@@ -32,6 +32,7 @@ const LivestreamPlayer: React.FC<PlayerProps> = ({ overlay, setOverlay }) => {
 
   useEffect(() => {
     socketRef.current = io("http://127.0.0.1:4999/test");
+    socketRef.current.emit("rtsp_url", localStorage.getItem("rtsp_url"));
 
     socketRef.current.on("frame", (data) => {
       if (localStorage.getItem("sid") !== data.sid) {
